@@ -2,7 +2,7 @@ require('dotenv').config();
 
 //step1: add mongoose and mongodb to the project
 const mongoose = require('mongoose')
-
+console.log(process.env.MONGO_URI)
 //Step2: setup mongo atlas and connect to the database using the following syntax:
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
