@@ -78,10 +78,20 @@ const findPersonById = (personId, done) => {
   });
 };
 
+//step12: Perform Classic Updates by Running Find, Edit, then Save
+//We find() the person first, then update() the desire key and lastly, save() it.
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
-  done(null /*, data*/);
+  Person.findById(personId, (err, personFound) => {
+    if (err) return console.error(err);
+    done(null, personFound);
+  }).update(personId, {favoriteFoods: favoriteFoods.push(foodToAdd)}, (err, individual) => {
+    if (err) return console.error(err);
+    done(null, individual);
+  }).save( (err, data) => {
+    if (err) return console.error(err);
+    done(null, data)
+  });
 };
 
 const findAndUpdate = (personName, done) => {
