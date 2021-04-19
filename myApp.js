@@ -1,5 +1,3 @@
-"use strict";
-
 require('dotenv').config();
 
 //step1: add mongoose and mongodb to the project
