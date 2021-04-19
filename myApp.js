@@ -39,8 +39,15 @@ const createAndSavePerson = (done) => {
   });
 };
 
+//step8: Create Many Records with model.create()
+//takes an array of objects like [{name: 'John', ...}, {...}, ...] 
+//as the first argument, and saves them all in the db.
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  let peoples = new Person(...arrayOfPeople) 
+  peoples.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data)
+  });
 };
 
 const findPeopleByName = (personName, done) => {
