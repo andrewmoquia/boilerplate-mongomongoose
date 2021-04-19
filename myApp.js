@@ -69,8 +69,13 @@ const findOneByFood = (food, done) => {
   })
 };
 
+//step11: Use model.findById() to Search Your Database By _id
+// Searching by _id is an extremely frequent operation, so Mongoose provides a dedicated method for it.
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findById(personId, (err, personFound) => {
+    if (err) return console.error(err);
+    done(null, personFound);
+  });
 };
 
 const findEditThenSave = (personId, done) => {
