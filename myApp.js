@@ -63,7 +63,7 @@ const findPeopleByName = (personName, done) => {
 //even if there are multiple items. It is especially useful 
 //when searching by properties that you have declared as unique.
 const findOneByFood = (food, done) => {
-  Person.findOne({favoriteFoods: [food]}, (err, foodFound) => {
+  Person.findOne({favoriteFoods: food}, (err, foodFound) => {
     if (err) return console.error(err);
     done(null, foodFound)
   })
