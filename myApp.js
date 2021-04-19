@@ -49,7 +49,7 @@ const createManyPeople = (arrayOfPeople, done) => {
   });
 };
 
-//Use model.find() to Search Your Database
+//step9: Use model.find() to Search Your Database
 //It returns an array of matches
 const findPeopleByName = (personName, done) => {
   Person.find({name: personName}, (err, people) => {
@@ -58,7 +58,15 @@ const findPeopleByName = (personName, done) => {
   })
 };
 
+
+//step10: Use model.findOne() to Return a Single Matching Document from Your Database
+//even if there are multiple items. It is especially useful 
+//when searching by properties that you have declared as unique.
 const findOneByFood = (food, done) => {
+  Person.findOne({favoriteFoods: [food]}, (err, foodFound) => {
+    if (err) return console.error(err);
+    done(null, foodFound)
+  })
   done(null /*, data*/);
 };
 
