@@ -43,8 +43,7 @@ const createAndSavePerson = (done) => {
 //takes an array of objects like [{name: 'John', ...}, {...}, ...] 
 //as the first argument, and saves them all in the db.
 const createManyPeople = (arrayOfPeople, done) => {
-  let peoples = new Person(...arrayOfPeople) 
-  peoples.save(function(err, data) {
+  Person.create(arrayOfPeople, (err,people) => {
     if (err) return console.error(err);
     done(null, data)
   });
