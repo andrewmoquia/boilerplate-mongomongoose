@@ -1,10 +1,10 @@
 require('dotenv').config();
 
 //step1: add mongoose and mongodb to the project
-const MongooseClient = require('mongoose');
+const mongoose = require('mongoose');
 
 //Step2: setup mongo atlas and connect to the database using the following syntax:
-MongooseClient.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let Person;
 
