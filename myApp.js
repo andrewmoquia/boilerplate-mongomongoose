@@ -11,15 +11,29 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 //step4: create a parent schema
 const { Schema } = mongoose;
 
-//step5: create a parent person schema
+//step5: create a parent person schema or blueprint
 let personSchema = new Schema ({
   name: {type: String, required: true},
   age: Number,
   favoriteFoods: [String]
 })
 
-//step6: create a model/child Person in paren personSchema
+//step6: create/instantiate a model of Person in parent personSchema in mongoose
 const Person = mongoose.model('Person', personSchema);
+
+//step7: create an object Person
+//Warning - When interacting with remote services, errors may occur!
+const createPerson = function(done) {
+  return new Person ({
+    name: "John Andrew",
+    age: 23,
+    favoriteFoods: ["icecream", "pizza", "burger"]
+  });
+  if (error) return done(error);
+  done(null, result);
+};
+
+
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
