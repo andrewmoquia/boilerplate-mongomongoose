@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-
 let Person;
 
 const createAndSavePerson = (done) => {
