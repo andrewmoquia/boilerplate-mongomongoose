@@ -25,7 +25,7 @@ let personSchema = new Schema ({
 //step6: create/instantiate a model of Person in parent personSchema in mongoose
 const Person = mongoose.model('Person', personSchema);
 
-//step7: create an object Person
+//step7: create and save a record of a model
 //Warning - When interacting with remote services, errors may occur!
 const createAndSavePerson = (done) => {
   let myInfo = new Person ({
@@ -33,14 +33,10 @@ const createAndSavePerson = (done) => {
     age: 23,
     favoriteFoods: ["icecream", "pizza", "burger"]
   });
-  Person.save(function(error, data) {
-    console.log(data)
-    if (error) {
-      return done(error);
-    } else {
-      return myInfo
-    }
-  })
+  myInfo.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data)
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
