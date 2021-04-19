@@ -1,3 +1,5 @@
+"use strict";
+
 require('dotenv').config();
 
 //step1: add mongoose and mongodb to the project
@@ -6,7 +8,20 @@ const mongoose = require('mongoose');
 //Step2: setup mongo atlas and connect to the database using the following syntax:
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-let Person;
+//step3: create a schema
+//It defines the shape of the documents within that collection. 
+//step4: create a parent schema
+const { Schema } = mongoose;
+
+//step5: create a parent person schema
+let personSchema = new Schema ({
+  name: {type: String, required: true},
+  age: Number,
+  favoriteFoods: [String]
+})
+
+//step6: create a model/child Person in paren personSchema
+const Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
